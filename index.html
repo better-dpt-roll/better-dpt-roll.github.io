@@ -1,0 +1,138 @@
+<html>
+    <head>
+      <title>a better /dpt/ roller</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+      <link rel="stylesheet"
+            href="css/main.css" />
+      <script type="text/javascript"
+              src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+      <script type="text/javascript"
+              src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+      <script type="text/javascript"
+              src="js/challenges.js"></script>
+      <script type="text/javascript"
+              src="js/main.js"></script>
+    </head>
+    
+    <body>
+      <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <span class="navbar-brand">a better /dpt/ roller</span>
+            <button class="navbar-toggle collapsed btn btn-primary navbar-btn"
+                    type="button"
+                    data-toggle="collapse" data-target="#controls">
+              ▼
+            </button>
+          </div>
+
+          <div id="controls"
+               class="nav navbar-nav navbar-right collapse navbar-collapse">
+            <button class="btn btn-primary navbar-btn" id="roll">Roll</button>
+            <button class="btn btn-default navbar-btn" id="dpt">&gt;&gt;&gt;/dpt/</button>
+            <button class="btn btn-default navbar-btn" id="info"
+                    data-toggle="modal"
+                    data-target="#info-modal">How to</button>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container-fluid" id="challenge-container">
+      </div>
+
+      <div class="modal fade" id="roll-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                  Roll: #<span id="rollValue"></span>
+                </div>
+                <div class="modal-body">
+                  <p>
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <a title="Link to this roll" id="roll-link"></a>
+                  <button class="btn btn-default" type="button"
+                          data-dismiss="modal">
+                    Close
+                  </button>
+                </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="info-modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                A concise how-to guide
+              </div>
+              
+              <div class="modal-body">
+                <ol start="0">
+                  <li><span>Set up a repository</span>
+                    <p><code>git init</code> should do the job. Commit early and often.</p>
+                  </li>
+                  <li><span>Understand the problem</span>
+                    <p>Use <i>Generally Useful Resources</i>™ to find out more information about what you're facing. If you need, use paper, draw diagrams, bite pencils.</p>
+                    <p>If the problem seems too difficult, try to simplify it and find a special case that may be easier to design and implement. If it seems too easy, generalize it; invent more complicated variations, or perhaps try to combine with other problems.</p>
+                  </li>
+                  <li><span>Implement</span>
+                    <p>Start with whatever language you know best or feel most comfortable with. If the problem is easy, pick a language you've never used before or one that you don't know too well yet. Don't be afraid to write ugly or non-idiomatic code as long as you understand what's going on. You can clean up the mess later.</p>
+                  </li>
+                  <li><span>Test</span>
+                    <p>Write tests checking both the ordinary and the exceptional cases of your program. Compile/interpret/eval whatever you've written and run the tests. Find bugs; fix them; repeat. Again, commit often, lest your progress vanish into the abyss.</p>
+                  </li>
+                  <li><span>Reimplement</span>
+                    <p>Now that you have a reference implementation, you can go wild! Reimplement the task in a different language this time, perhaps one that you've been meaning to learn for years, Try to achieve the same outcome using different techniques or different idioms. Try to make the code as short as possible -- or the contrary.</p>
+                  </li>
+                </ol>
+
+                <p>
+                  <span><i>Generally Useful Resources</i>™</span>
+                  Google, Wikipedia, Stack Overflow, the web in general - don't ask stupid questions, look them up first
+                </p>
+                <p>
+                  <span>Literature</span>
+                  <ul>
+                    <li>Knuth: <i>The Art of Computer Programming</i> (TAOCP)</li>
+                    <li>Skiena: <i>The Algorithm Design Manual</i></li>
+                    <li>Cormen et al.: <i>Introduction to Algorithms</i> (CLR, CLRS)</li>
+                    <li>Russell, Norvig: <i>Artificial Intelligence: A Modern Approach</i></li>
+                    <li>Abelson, Sussman: <i>Structure and Interpretation of Computer Programs</i> (SICP)</li>
+                  </ul>
+                </p>
+                <p>
+                  <span>See also</span>
+                  <ul>
+                      <li><a href="hackerrank.com">hackerrank.com</a></li>
+                      <li><a href="codechef.com">codechef.com</a></li>
+                      <li><a href="codefights.com">codefights.com</a></li>
+                      <li><a href="projecteuler,net">projecteuler,net</a></li>
+                      <li><a href="ctftime.org">ctftime.org</a></li>
+                      <li><a href="rosettacode.org">rosettacode.org</a></li>
+                  </ul>
+                </p>
+                <p class="byline">
+                  /dpt/ challenge list version <span id="dpt-version"></span>
+                  <br />
+                  Original list made by Anonymous in January 2015
+                  <br />
+                  This tool made by some random jackass in June 2015
+                </p>
+              </div>
+
+              <div class="modal-footer">
+                <button class="btn btn-primary" type="button"
+                        data-dismiss="modal">
+                  Close
+                </button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </body>
+</html>

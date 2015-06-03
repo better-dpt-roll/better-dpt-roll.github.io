@@ -1,0 +1,69 @@
+body {
+  padding-top: 7ex;
+}
+
+.hidden {
+  display: none;
+}
+
+div.modal-header {
+  font-size: x-large;
+}
+
+div#info-modal li span,
+div#info-modal p span {
+  display: block;
+  font-size: medium;
+  font-weight: bold;
+}
+
+div#challenge-container div.row {
+  font-size: small;
+}
+
+div#challenge-container div.row.selected {
+  font-size: x-large;
+}
+
+div.row {
+  cursor: pointer;
+}
+
+div.row.even {
+  background: #eee;
+}
+
+div.row div.index {
+  text-align: center;
+  font-family: monospace;
+}
+
+div.row div.challenge span.extra,
+#roll-modal div.modal-body span.extra {
+  display: block;
+  font-size: smaller;
+}
+
+div#info-modal div.modal-body p.byline {
+  font-size: small;
+  font-style: italic;
+  text-align: right;
+}
+
+div#info-modal div.modal-body p.byline span#dpt-version {
+  font-size: small;
+  font-weight: normal;
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 8ex;
+  }
+}
+
+@media (max-width: 375px) {
+  div.row div.challenge {
+    width: auto;
+  }
+}
