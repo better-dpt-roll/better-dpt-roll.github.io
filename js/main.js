@@ -4,9 +4,7 @@ function pad(i) {
   return (i.toString().length < 2 ? '0' : '') + i;
 }
 
-function fetchInfo(key) {
-  console.log('fetchInfo');
-  
+function fetchInfo(key, target) {
   var defer = jQuery.ajax({
     dataType: 'jsonp',
     url: 'http://en.wikipedia.org/w/api.php'
@@ -16,11 +14,67 @@ function fetchInfo(key) {
       + '&titles=' + key.replace(/ /g, '_')
   });
 
-  console.log(defer);
-  
   defer.then(function(data, status, xhr) {
-    console.log(data);
+    var foo = element({
+      name: 'body',
+      content: data.query.pages[Object.keys(data.query.pages)[0]]
+        .extract
+    });
+    document.querySelector(target).innerHTML =
+      foo.querySelector('p').innerHTML;
   });
+}
+
+function loadInfo(info, el) {
+  Array.prototype.forEach.call(el.childNodes, function(node) {
+    el.removeChild(node);
+  });
+
+  if (typeof info.wikipedia !== 'undefined') {
+    if (!Array.isArray(info.wikipedia)) {
+      info.wikipedia = [info.wikipedia];
+    }
+
+    info.wikipedia.forEach(function(wik, i) {
+      var wikiInfo
+        , detailsLink;
+
+      detailsLink = element({
+        name: 'a',
+        className: 'details',
+        content: 'Read more'
+      });
+      detailsLink.href = 'http://en.wikipedia.org/wiki/'
+        + wik;
+      
+      wikiInfo = element({
+        name: 'span',
+        className: 'wiki-info-' + i,
+        children: [
+          element({
+            name: 'p',
+            className: 'wiki-info',
+            content: 'Loading...'
+          }),
+          detailsLink
+        ]
+      });
+      fetchInfo(wik, 'span.wiki-info-' + i + ' p.wiki-info');
+      el.appendChild(wikiInfo);
+    });
+  } else {
+    var detailsLink = element({
+      name: 'a',
+      className: 'details',
+      content: 'Read more'
+    });
+    detailsLink.href = info.source;
+    el.appendChild(element({
+      name: 'span',
+      content: info.text.join('<br />'),
+      children: [detailsLink]
+    }));
+  }
 }
 
 function renderChallenges() {
@@ -50,26 +104,21 @@ function renderChallenges() {
     var cell = {
       name: 'div',
       className: 'col-xs-11 col-sm-11 challenge',
-      content: challenge[0],
+      content: challenge.name,
       children: []
     };
 
-    for (var j = 1; j < challenge.length; j++) {
-      var subinfo = challenge[j];
-      if (typeof subinfo === 'number') {
-        cell.children.push(element({
-          name: 'span',
-          className: 'extra',
-          content: 'Note: ' + data.notes[subinfo]
-        }));
-      } else {
-        cell.children.push(element({
-          name: 'span',
-          className: 'extra',
-          content: 'Bonus: ' + subinfo
-        }));
+    ['bonus', 'note'].forEach(function(extraType) {
+      if (challenge[extraType]) {
+        challenge[extraType].forEach(function(bonus) {
+          cell.children.push(element({
+            name: 'span',
+            className: 'extra',
+            content: extraType + ': ' + bonus
+          }));
+        });
       }
-    }
+    });
     
     rowHtml.appendChild(element(cell));
     rowHtml.addEventListener('click', function(e) {
@@ -101,14 +150,14 @@ function roll(n) {
         .height
         .replace(/px$/, '')
     , rollModal = $('#roll-modal')
+    , data
     , target
     , scrolledY;
 
   if (typeof n === 'undefined') {
     n = Math.floor(Math.random() * window.challenges.challenges.length);
   }
-
-  fetchInfo('Connect Four');
+  data = window.challenges.challenges[n];
 
   headerHeight = parseInt(headerHeight, 10);
   
@@ -129,11 +178,18 @@ function roll(n) {
   }
 
   rollModal.find('.modal-header span').html(pad(n));
+
   rollModal.find('.modal-footer a')
     .attr('href', '#' + n.toString())
     .html(window.location.href.replace(/\#.*$/, '') + '#' + n.toString());
-  rollModal.find('.modal-body p')
+
+  rollModal.find('.modal-body p.challenge')
     .html(target.querySelector('.challenge').innerHTML);
+
+  if (typeof data.info !== 'undefined') {
+    loadInfo(data.info, rollModal.find('.modal-body p.info')[0]);
+  }
+
   rollModal.modal('show');
 }
 
