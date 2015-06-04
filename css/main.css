@@ -2,6 +2,18 @@ body {
   padding-top: 7ex;
 }
 
+body a#fork-me {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  border: 0px;
+  z-index: 10000;
+}
+
+body a#fork-me img {
+  transform: rotate(0.5turn);
+}
+  
 .hidden {
   display: none;
 }
