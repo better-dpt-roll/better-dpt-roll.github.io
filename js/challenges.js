@@ -1,5 +1,5 @@
 window.challenges = {
-  "version": "1.4ζ",
+  "version": "2.0α",
   "challenges": [
     {
       difficulty: 'easier',
@@ -162,7 +162,7 @@ window.challenges = {
       difficulty: 'easy',
       name: "Minesweeper",
       info: {
-        wikipedia: 'Minesweeper'
+        wikipedia: 'Minesweeper_(video_game)'
       }
     },
     {
@@ -513,7 +513,7 @@ window.challenges = {
       }
     },
     {
-      difficulty: 'medium',
+      difficulty: 'harder',
       name: "Klingon translator", 
       bonus: ["bidirectional"],
       info: {
@@ -772,6 +772,306 @@ window.challenges = {
       bonus: ["decrypt messages without known settings"],
       info: {
         wikipedia: 'Enigma_machine'
+      }
+    },
+    {
+      difficulty: 'medium',
+      name: 'Given an IPv4 address and a subnet mask, compute the network, broadcast, and first/last host addresses',
+      info: {
+        wikipedia: 'IPv4'
+      }
+    },
+    {
+      difficulty: 'medium',
+      name: 'Bellman-Ford simulation (at least five vertices)',
+      bonus: ['...ten vertices'],
+      info: {
+        wikipedia: 'Bellman-Ford_algorithm'
+      }
+    },
+    {
+      difficulty: 'medium',
+      name: 'Your own small assembly language + VM for it',
+      bonus: ['and make a game with it'],
+      info: {
+        wikipedia: 'Assembly_language'
+      }
+    },
+    {
+      difficulty: 'easy',
+      name: 'Print long passages of text with word wrapping',
+      bonus: ['with intraword hyphenation', '...and soft hyphens'],
+      info: {
+        wikipedia: 'Line_wrap_and_word_wrap'
+      }
+    },
+    {
+      difficulty: 'medium',
+      name: 'Simple billiards game',
+      info: {
+        wikipedia: 'Billiards'
+      }
+    },
+    {
+      difficulty: 'medium',
+      name: 'Infix arithmetic evaluator (e.g. "7+5*32/2+3")',
+      bonus: ['supporting parentheses for explicit operation order', '...and more operations than +, -, *, /'],
+      info: {
+        wikipedia: 'Arithmetic'
+      }
+    },
+    {
+      difficulty: 'hard',
+      name: 'Calculate and print calendars for arbitrary months and years',
+      bonus: ['for a system other than Gregorian'],
+      info: {
+        wikipedia: 'Calendar'
+      }
+    },
+    {
+      difficulty: 'easy',
+      name: 'Determine whether two given rectangles overlap; if they do, compute their intersection',
+      info: {
+        wikipedia: 'Area'
+      }
+    },
+    {
+      difficulty: 'easy',
+      name: 'Calculate the number of days between two dates',
+      bonus: ['and account for leap years'],
+      info: {
+        wikipedia: 'Date'
+      }
+    },
+    {
+      difficulty: 'medium',
+      name: 'Scorched Earth clone',
+      bonus: ['with AI players'],
+      info: {
+        wikipedia: 'Scorched_Earth_(video_game)'
+      }
+    },
+    {
+      difficulty: 'medium',
+      name: 'Find the longest common substring of two strings',
+      bonus: ['in O(n) time'],
+      info: {
+        wikipedia: 'Smith\u2013Waterman_algorithm'
+      }
+    },
+    {
+      difficulty: 'hard',
+      name: 'Image convolution (and/or other effects) using multiple threads',
+      bonus: ['on the GPU'],
+      info: {
+        wikipedia: 'Convolution'
+      }
+    },
+    {
+      difficulty: 'easy',
+      name: 'Given a directory, recursively search it for its largest and smallest (> 0 bytes) files; print their pathnames and sizes',
+      info: {
+        wikipedia: 'find'
+      }
+    },
+    {
+      difficulty: 'easy',
+      name: 'Given a string, determine whether it is a palindrome',
+      info: {
+        wikipedia: 'Palindrome'
+      }
+    },
+    {
+      difficulty: 'easy',
+      name: 'Read a text file, then center or right-align or justify its contents',
+      info: {
+        wikipedia: 'Typographic_alignment'
+      }
+    },
+    {
+      difficulty: 'medium',
+      name: 'Implement an old school demo effect (tunnel, plasma, scroller, zoomer, etc.)',
+      info: {
+        wikipedia: 'Demoscene'
+      }
+    },
+    {
+      difficulty: 'easy',
+      name: 'Iteratively calculate the first 1000 digits of π',
+      info: {
+        wikipedia: 'Pi'
+      }
+    },
+    {
+      difficulty: 'easy',
+      name: 'Plot a mathematical function of your choice',
+      bonus: ['given user-supplied coefficients and axis ranges', 'given a user-supplied function'],
+      info: {
+        wikipedia: 'Graph_of_a_function'
+      }
+    },
+    {
+      difficulty: 'medium',
+      name: 'Draw a spinning 3D cube',
+      info: {
+        text: ['Use the engine of your choice.'],
+        source: 'https://www.google.com/search?q=3d+spinning+cube'
+      }
+    },
+    {
+      difficulty: 'easy',
+      name: 'Voronoi diagram from a set of random points',
+      info: {
+        wikipedia: 'Voronoi_diagram'
+      }
+    },
+    {
+      difficulty: 'easy',
+      name: 'Unit converter (weight, mass, area, length, &c.)',
+      bonus: ['among multiple quantity types (weight and mass, &c.)'],
+      info: {
+        wikipedia: 'Conversion_of_units'
+      }
+    },
+    {
+      difficulty: 'medium',
+      name: 'Anagram finder',
+      bonus: [],
+      info: {
+        wikipedia: 'Anagram'
+      }
+    },
+    {
+      difficulty: 'medium',
+      name: 'Sound synthesis',
+      bonus: ['with WAV file output', '...and sound font generation', '...and realtime MIDI playback'],
+      info: {
+        wikipedia: [
+          'Synthesizer',
+          'WAV',
+          'SoundFont',
+          'MIDI'
+        ]
+      }
+    },
+    {
+      difficulty: 'easy',
+      name: '15-piece sliding puzzle game',
+      bonus: ['support arbitrary square numbers (&gt; 1)', '...and a solver'],
+      info: {
+        wikipedia: 'Sliding_puzzle'
+      }
+    },
+    {
+      difficulty: 'medium',
+      name: 'Reverse a number mathematically (e.g. 12345 → 54321)'
+    },
+    {
+      difficulty: 'easy',
+      name: 'Luhn\'s checksum algorithm',
+      bonus: ['...and generate Luhn-valid numbers programmatically, without brute force'],
+      info: {
+        wikipedia: 'Luhn_algorithm'
+      }
+    },
+    {
+      difficulty: 'hard',
+      name: 'Choose and implement a procedural texturing algorithm',
+      bonus: ['with multiple passes'],
+      info: {
+        wikipedia: 'Procedural_texture'
+      }
+    },
+    {
+      difficulty: 'medium',
+      name: 'Draw an ASCII circle of given radius',
+      bonus: ['colorize it', '...with separate stroke and fill'],
+      info: {
+        wikipedia: 'Circle'
+      }
+    },
+    {
+      difficulty: 'medium',
+      name: 'Solitaire (Patience) game',
+      bonus: ['with graphics'],
+      info: {
+        wikipedia: 'Patience_(game)'
+      }
+    },
+    {
+      difficulty: 'hard',
+      name: 'Columns game',
+      bonus: [],
+      info: {
+        wikipedia: 'Columns_(video_game)'
+      }
+    },
+    {
+      difficulty: 'easy',
+      name: 'Load an image; flip, mirror, or rotate it at random; save it to a new file',
+      bonus: ['without using ImageMagick', '...or any libraries']
+    },
+    {
+      difficulty: 'easy',
+      name: 'Level viewer for a game of your choosing',
+      bonus: ['...a 2D game', '...a 2.5D game', '...a 3D game']
+    },
+    {
+      difficulty: 'medium',
+      name: 'Basic TCP simulator (handshake, send data, close connection neatly)',
+      bonus: ['with retransmissions', '...and OOB data', '...and window scaling'],
+      info: {
+        wikipedia: 'Transmission_Control_Protocol'
+      }
+    },
+    {
+      difficulty: 'easy',
+      name: 'Convert integers to correctly formed text representation (1 → "one", 123 → "one hundred twenty-three", &c.)',
+      bonus: ['and decimal numbers', '...and fractions'],
+      info: {
+        text: [
+          'If you can say it, you can write it. A rule of thumb is to write out numbers just as they sound. If your number is 1,234, say it out loud. It will be written just as it sounds: One thousand two hundred thirty-four.'
+        ],
+        source: 'http://www.grammarbook.com/numbers/numbers.asp'
+      }
+    },
+    {
+      difficulty: 'easy',
+      name: 'Sort strings containing numbers in numeric order ("abc1", "abc2", "abc10", "abc20", ...)',
+      bonus: [],
+      info: {
+        wikipedia: 'Collation'
+      }
+    },
+    {
+      difficulty: 'easy',
+      name: 'Wind chill calculator',
+      bonus: [],
+      info: {
+        wikipedia: 'Wind_chill'
+      }
+    },
+    {
+      difficulty: 'medium',
+      name: 'Recursively split an image into rectangles using a quadtree (hint: mean squared error)',
+      info: {
+        wikipedia: 'Quadtree'
+      }
+    },
+    {
+      difficulty: 'medium',
+      name: 'Multiply two random 100-digit numbers and display the result, without using native or library methods',
+      bonus: [],
+      info: {
+        wikipedia: 'Arbitrary-precision_arithmetic'
+      }
+    },
+    {
+      difficulty: 'hard',
+      name: 'Wolf 3D-style ray caster with collision detection',
+      bonus: ['and texture mapping', '...and texture-mapped floors/ceilings', '...and lighting'],
+      info: {
+        wikipedia: 'Ray_casting'
       }
     }
   ]
