@@ -1113,6 +1113,33 @@ window.challenges = {
           'Fix it and submit a pull request.'
         ]
       }
+    },
+    {
+      difficulty: 'hard',
+      name: '4chan thread quality analyzer',
+      bonus: ['with browser integration', 'using machine learning techniques', 'with resilience against trolls'],
+      info: {
+        text: [
+          '4chan posts can be roughly rated on a scale from "worthwhile" to "shitpost".',
+          'At minimum:',
+          '1. Come up with a method of accepting user input to categorize posts, and deriving information from user-supplied rankings to automatically rank new posts.',
+          '2. Also come up with a method of exposing the automatic (and/or user-provided) ranking, if available, for a given post.',
+          'Ideally, provide some sort of browser integration so that the rankings can be used while actually browsing 4chan.'
+        ],
+        source: 'https://en.wikipedia.org/wiki/Machine_learning'
+      }
+    },
+    {
+      difficulty: 'easy',
+      name: 'Reaction image categorizer',
+      bonus: ['cross-platform'],
+      info: {
+        text: [
+          'For each image in a given directory, display it and prompt the user for category information (basically tags).',
+          'Use that information to rename the image and/or file it in a directory suitable for its category.',
+          'This should greatly facilitate shitposting.'
+        ]
+      }
     }
   ]
 };
