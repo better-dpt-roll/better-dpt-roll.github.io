@@ -1,7 +1,7 @@
-#+TITLE: A better /dpt/ roller
+#+TITLE: A better ​/dpt​/ roller
 
 * What?
-A better challenge roller for /dpt/.
+A better challenge roller for the ​/g​/ daily programming thread.
 
 * Why?
 Because [[http://dpt-roll.github.io][the other one]] is kinda dicks.
