@@ -36,7 +36,7 @@ function pad(i) {
 function fetchInfo(key, target) {
   var defer = jQuery.ajax({
     dataType: 'jsonp',
-    url: 'http://en.wikipedia.org/w/api.php'
+    url: '//en.wikipedia.org/w/api.php'
       + '?action=query' 
       + '&format=json'
       + '&prop=extracts'
