@@ -1,0 +1,13 @@
+#+TITLE: A better /dpt/ roller
+
+* What?
+A better challenge roller for /dpt/.
+
+* Why?
+Because [[http://dpt-roll.github.io][the other one]] is kinda dicks.
+
+* Who?
+Me.
+
+* It's shit and you should feel bad.
+Great, open a pull request. (I know the list's outdated; I couldn't find a copy of the 2.0 list image, so I used what I had.)
