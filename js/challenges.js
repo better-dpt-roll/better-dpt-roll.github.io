@@ -1073,6 +1073,14 @@ window.challenges = {
       info: {
         wikipedia: 'Ray_casting'
       }
+    },
+    {
+      difficulty: 'medium',
+      name: 'Simple top-down ASCII "roguelike" with multilevel dungeon generation',
+      bonus: ['and combat including monster AI', '...and persistent dungeon levels', '...and a save/load system', '...and an inventory system'],
+      info: {
+        wikipedia: 'Roguelike'
+      }
     }
   ]
 };
