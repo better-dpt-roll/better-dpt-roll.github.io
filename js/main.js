@@ -1,9 +1,38 @@
 var lastSelected;
 
+/*
+ * Utility functions
+ */
+
+/**
+ * Generate a DOM node with given properties.
+ */
+function element(details) {
+  var el = document.createElement(details.name);
+  el.className = details.className || '';
+  el.innerHTML = details.content || '';
+  if (typeof details.children !== 'undefined') {
+    details.children.forEach(function(child) {
+      el.appendChild(child);
+    });
+  }
+  return el;
+}
+
+/**
+ * Left-pad a number with a single 0 if necessary
+ */
 function pad(i) {
   return (i.toString().length < 2 ? '0' : '') + i;
 }
 
+/**
+ * Fetch info for a given key from the Wikipedia API, and insert the
+ * first paragraph of the resultant extract into the given target
+ * element
+ *
+ * FIXME this has no real error handling (e.g. page not found)
+ */
 function fetchInfo(key, target) {
   var defer = jQuery.ajax({
     dataType: 'jsonp',
@@ -20,17 +49,31 @@ function fetchInfo(key, target) {
       content: data.query.pages[Object.keys(data.query.pages)[0]]
         .extract
     });
-    document.querySelector(target).innerHTML =
-      foo.querySelector('p').innerHTML;
+
+    if (foo.querySelector('p')) {
+      document.querySelector(target).innerHTML =
+        foo.querySelector('p').innerHTML;
+    } else {
+      document.querySelector(target).innerHTML = '';
+    }
   });
 }
 
+/**
+ * Given an "info" struct from challenges.js, populate the roll result
+ * modal with the relevant HTML.
+ *
+ * FIXME messy; refactor
+ * FIXME cache wikimedia content
+ */
 function loadInfo(info, el) {
   Array.prototype.forEach.call(el.childNodes, function(node) {
     el.removeChild(node);
   });
 
   if (typeof info.wikipedia !== 'undefined') {
+    // if this is a wikipedia ref (or set of same), fetch and append
+    // all
     if (!Array.isArray(info.wikipedia)) {
       info.wikipedia = [info.wikipedia];
     }
@@ -63,6 +106,8 @@ function loadInfo(info, el) {
       el.appendChild(wikiInfo);
     });
   } else {
+    // if the extra info is defined within challenges.js, just append
+    // it
     var detailsLink = element({
       name: 'a',
       className: 'details',
@@ -77,6 +122,16 @@ function loadInfo(info, el) {
   }
 }
 
+/*
+ * Primary behaviors
+ */
+
+/**
+ * Take the data from challenges.js (bound to window.challenges) and
+ * populate the challenge list with it.
+ *
+ * NB: Called on DOMContentLoaded.
+ */
 function renderChallenges() {
   var target = document.querySelector('#challenge-container')
     , data = window.challenges
@@ -85,9 +140,11 @@ function renderChallenges() {
     , rowHtml
     , cellHtml;
 
+  // Set the challenge list version in the info modal
   document.querySelector('span#dpt-version')
     .innerHTML = data.version;
 
+  // Render each challenge into a row div within #challenge-container
   for (var i = 0; i < data.challenges.length; i++) {
     challenge = data.challenges[i];
     
@@ -95,12 +152,14 @@ function renderChallenges() {
     rowHtml.id = 'challenge-' + i.toString();
     rowHtml.className = 'row ' + (i % 2 ? 'even' : 'odd');
 
+    // Index cell
     rowHtml.appendChild(element({
       name: 'div',
       className: 'col-xs-1 col-sm-1 index',
       content: pad(i)
     }));
 
+    // Challenge text cell
     var cell = {
       name: 'div',
       className: 'col-xs-11 col-sm-11 challenge',
@@ -108,6 +167,7 @@ function renderChallenges() {
       children: []
     };
 
+    // Extra details if the challenge includes them
     ['bonus', 'note'].forEach(function(extraType) {
       if (challenge[extraType]) {
         challenge[extraType].forEach(function(bonus) {
@@ -119,8 +179,8 @@ function renderChallenges() {
         });
       }
     });
-    
-    rowHtml.appendChild(element(cell));
+
+    // Clicking on a challenge pops it up as though rolled
     rowHtml.addEventListener('click', function(e) {
       var rowDiv = e.target;
       while (rowDiv.tagName !== 'div' && !rowDiv.className.match(/^row/)) {
@@ -129,22 +189,20 @@ function renderChallenges() {
       roll(parseInt(rowDiv.querySelector('.index').innerHTML));
     });
 
+    // Add new nodes to DOM
+    rowHtml.appendChild(element(cell));
     target.appendChild(rowHtml);
   }
 }
 
-function element(details) {
-  var el = document.createElement(details.name);
-  el.className = details.className || '';
-  el.innerHTML = details.content || '';
-  if (typeof details.children !== 'undefined') {
-    details.children.forEach(function(child) {
-      el.appendChild(child);
-    });
-  }
-  return el;
-}
-
+/**
+ * Roll a random challenge, or select the challenge with the given
+ * number if a number is given.
+ *
+ * NB: Called on DOMContentLoaded if the href has a hash with a
+ * challenge number (e.g. #12).
+ * NB: Called when the 'roll' button is clicked.
+ */
 function roll(n) {
   var headerHeight = window.getComputedStyle(document.querySelector('nav'))
         .height
@@ -193,14 +251,21 @@ function roll(n) {
   rollModal.modal('show');
 }
 
+/**
+ * Search 4chan's catalog for the daily programming thread.
+ *
+ * NB: Called when the '>>>/dpt/' button is clicked.
+ */
 function dpt() {
   window.location.href = 'https://boards.4chan.org/g/catalog#s=/dpt/';
 }
 
-function info() {
-  $('#info').modal();
-}
-
+/**
+ * Bind header buttons to their behaviors (the "How to" button is
+ * handled by Bootstrap).
+ *
+ * NB: Called on DOMContentLoaded.
+ */
 function bindButtons() {
   document.querySelector('button#dpt')
     .addEventListener('click', dpt);
@@ -208,12 +273,22 @@ function bindButtons() {
     .addEventListener('click', function() { roll(); });
 }
 
+/**
+ * If the window has a hash, select (roll) the challenge with the
+ * given number.
+ *
+ * NB: Called on DOMContentLoaded.
+ * FIXME: This function doesn't handle errors (e.g. a bogus hash).
+ */
 function setInitialRoll() {
   if (window.location.hash !== '') {
     roll(window.location.hash.replace(/^#/, ''));
   }
 }
 
+/*
+ * Set up the page behaviors once it's ready to receive them
+ */
 document.addEventListener('DOMContentLoaded', renderChallenges);
 document.addEventListener('DOMContentLoaded', bindButtons);
 document.addEventListener('DOMContentLoaded', setInitialRoll);
