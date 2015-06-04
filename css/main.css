@@ -39,9 +39,18 @@ div.row div.index {
 }
 
 div.row div.challenge span.extra,
-#roll-modal div.modal-body span.extra {
+div#roll-modal div.modal-body span.extra {
   display: block;
   font-size: smaller;
+}
+
+div#roll-modal div.modal-body p.challenge {
+  font-size: x-large;
+}
+
+div#roll-modal div.modal-body p.info a.details {
+  display: block;
+  text-align: right;
 }
 
 div#info-modal div.modal-body p.byline {
