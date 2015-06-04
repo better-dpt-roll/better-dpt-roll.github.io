@@ -2,9 +2,9 @@ window.challenges = {
   "version": "2.0α",
   "challenges": [
     {
-      difficulty: 'easier',
-      name: "Name generator",
-      bonus: ["credentials"],
+      difficulty: 'easy',
+      name: "Random name generator",
+      bonus: ["with usernames and passwords"],
       info: {
         wikipedia: 'Name_generator'
       }
@@ -26,16 +26,16 @@ window.challenges = {
       }
     },
     {
-      difficulty: 'easier',
+      difficulty: 'easy',
       name: "Temperature converter",
       info: {
         wikipedia: 'Conversion_of_units_of_temperature'
       }
     },
     {
-      difficulty: 'easier',
+      difficulty: 'easy',
       name: "Calculate age in seconds", 
-      bonus: ["with leap years"],
+      bonus: ["accounting for leap years"],
       info: {
         text: [
           'Given a date, calculate the time between then and now, and express it in seconds.'
@@ -45,19 +45,20 @@ window.challenges = {
     {
       difficulty: 'medium',
       name: "Encryption/decryption algorithm",
+      bonus: ['that\'s not quite entirely insecure'],
       info: {
         wikipedia: 'Encryption'
       }
     },
     {
-      difficulty: 'easier',
+      difficulty: 'easy',
       name: "Fizzbuzz",
       info: {
         wikipedia: 'Fizz buzz'
       }
     },
     {
-      difficulty: 'easier',
+      difficulty: 'easy',
       name: "Rock, paper, scissors",
       bonus: ["+ lizard, Spock"],
       info: {
@@ -65,9 +66,9 @@ window.challenges = {
       }
     },
     {
-      difficulty: 'hard',
-      name: "Project Euler", 
-      bonus: ["in every language you know"],
+      difficulty: 'medium',
+      name: "Three Project Euler problems",
+      bonus: ['...five problems', "in every language you know"],
       info: {
         wikipedia: 'Project_Euler'
       }
@@ -75,13 +76,14 @@ window.challenges = {
     {
       difficulty: 'medium',
       name: "Hangman",
+      bonus: ['with graphics'],
       info: {
         wikipedia: 'Hangman_(game)'
       }
     },
     {
       difficulty: 'medium',
-      name: "Random sentence generator",
+      name: "Travesty generator",
       info: {
         wikipedia: 'Parody_generator'
       }
@@ -95,7 +97,7 @@ window.challenges = {
     },
     {
       difficulty: 'easy',
-      name: "Internet time", 
+      name: "Internet time",
       bonus: ["(S)NTP"],
       info: {
         wikipedia: [
@@ -105,28 +107,28 @@ window.challenges = {
       }
     },
     {
-      difficulty: 'easy',
+      difficulty: 'medium',
       name: "Haiku generator",
       info: {
         wikipedia: 'Haiku_in_English'
       }
     },
     {
-      difficulty: 'easier',
+      difficulty: 'easy',
       name: "Magic eight ball",
       info: {
         wikipedia: 'Magic_8-Ball'
       }
     },
     {
-      difficulty: 'easier',
+      difficulty: 'easy',
       name: "Collatz conjecture",
       info: {
         wikipedia: 'Collatz_conjecture'
       }
     },
     {
-      difficulty: 'easier',
+      difficulty: 'easy',
       name: "Reverse a string",
       info: {
         text: [
@@ -149,7 +151,7 @@ window.challenges = {
       }
     },
     {
-      difficulty: 'easier',
+      difficulty: 'easy',
       name: "Count words in a string", 
       bonus: ["lines, sentences, paragraphs, typos, &c."],
       info: {
@@ -173,7 +175,7 @@ window.challenges = {
       }
     },
     {
-      difficulty: 'easier',
+      difficulty: 'easy',
       name: "BMI calculator",
       info: {
         wikipedia: 'Body_mass_index'
@@ -206,7 +208,7 @@ window.challenges = {
       }
     },
     {
-      difficulty: 'easier',
+      difficulty: 'easy',
       name: "Radix (base) converter",
       info: {
         text: [
@@ -222,14 +224,14 @@ window.challenges = {
       }
     },
     {
-      difficulty: 'easier',
+      difficulty: 'easy',
       name: "Fibonacci sequence",
       info: {
         wikipedia: 'Fibonacci_number'
       }
     },
     {
-      difficulty: 'easier',
+      difficulty: 'easy',
       name: "Factorial",
       info: {
         wikipedia: 'Factorial'
@@ -282,7 +284,7 @@ window.challenges = {
       }
     },
     {
-      difficulty: 'easier',
+      difficulty: 'easy',
       name: "Currency converter", 
       bonus: ["various units, commodities, etc.", "with history"],
       info: {
@@ -433,9 +435,9 @@ window.challenges = {
       }
     },
     {
-      difficulty: 'hard',
+      difficulty: 'easy',
       name: "Mandelbrot set", 
-      bonus: ["other fractals"],
+      bonus: ["without using scientific/mathematical libraries", "...and without using plotting libraries"],
       info: {
         wikipedia: 'Mandelbrot_set'
       }
@@ -477,7 +479,7 @@ window.challenges = {
       }
     },
     {
-      difficulty: 'easier',
+      difficulty: 'easy',
       name: "Credential validator", 
       bonus: ["phone, email, &c."], 
       info: {
@@ -543,7 +545,7 @@ window.challenges = {
       }
     },
     {
-      difficulty: 'easier',
+      difficulty: 'easy',
       name: "Two languages communicating with each other (C++/Java, Lisp/Python, &c.)",
       bonus: ["without using the filesystem", "and without using TCP"]
     },
@@ -1080,6 +1082,36 @@ window.challenges = {
       bonus: ['and combat including monster AI', '...and persistent dungeon levels', '...and a save/load system', '...and an inventory system'],
       info: {
         wikipedia: 'Roguelike'
+      }
+    },
+    {
+      difficulty: 'medium',
+      name: 'Fetch two random Pokémon from the pokeapi.co Pokedex API and simulate a fight between them',
+      bonus: ['show each Pokémon\'s sprite', '...and a full history of the fight'],
+      info: {
+        text: [
+          'The API is rate-limited to 300 requests per resource per IP, so you\'ll probably want to cache resources.'
+        ],
+        source: 'http://pokeapi.co'
+      }
+    },
+    {
+      difficulty: 'easy',
+      name: 'Find a source of interesting time-series data and use it to produce a nifty chart or other visualization',
+      bonus: ['in a single-page web app', '...a responsive single-page web app', 'and make the visualization interactive'],
+      info: {
+        wikipedia: 'Time_series'
+      }
+    },
+    {
+      difficulty: 'easy',
+      name: 'Improve this tool',
+      info: {
+        source: 'https://github.com/better-dpt-roll/better-dpt-roll.github.io',
+        text: [
+          'Find something about this tool that you think is worth fixing.',
+          'Fix it and submit a pull request.'
+        ]
       }
     }
   ]
