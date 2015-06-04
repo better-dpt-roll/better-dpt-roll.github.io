@@ -2,6 +2,7 @@ window.challenges = {
   "version": "1.4ζ",
   "challenges": [
     {
+      difficulty: 'easier',
       name: "Name generator",
       bonus: ["credentials"],
       info: {
@@ -9,6 +10,7 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'easy',
       name: "Higher/lower, heads/tails",
       info: {
         text: [
@@ -24,12 +26,14 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'easier',
       name: "Temperature converter",
       info: {
         wikipedia: 'Conversion_of_units_of_temperature'
       }
     },
     {
+      difficulty: 'easier',
       name: "Calculate age in seconds", 
       bonus: ["with leap years"],
       info: {
@@ -39,25 +43,29 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'medium',
       name: "Encryption/decryption algorithm",
       info: {
         wikipedia: 'Encryption'
       }
     },
     {
+      difficulty: 'easier',
       name: "Fizzbuzz",
       info: {
         wikipedia: 'Fizz buzz'
       }
     },
     {
-      name: "Rock, paper, scissors", 
+      difficulty: 'easier',
+      name: "Rock, paper, scissors",
       bonus: ["+ lizard, Spock"],
       info: {
         wikipedia: 'Rock-paper-scissors'
       }
     },
     {
+      difficulty: 'hard',
       name: "Project Euler", 
       bonus: ["in every language you know"],
       info: {
@@ -65,24 +73,28 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'medium',
       name: "Hangman",
       info: {
         wikipedia: 'Hangman_(game)'
       }
     },
     {
+      difficulty: 'medium',
       name: "Random sentence generator",
       info: {
         wikipedia: 'Parody_generator'
       }
     },
     {
+      difficulty: 'easy',
       name: "Password/passphrase generator",
       info: {
         wikipedia: 'Random_password_generator'
       }
     },
     {
+      difficulty: 'easy',
       name: "Internet time", 
       bonus: ["(S)NTP"],
       info: {
@@ -93,24 +105,28 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'easy',
       name: "Haiku generator",
       info: {
         wikipedia: 'Haiku_in_English'
       }
     },
     {
+      difficulty: 'easier',
       name: "Magic eight ball",
       info: {
         wikipedia: 'Magic_8-Ball'
       }
     },
     {
+      difficulty: 'easier',
       name: "Collatz conjecture",
       info: {
         wikipedia: 'Collatz_conjecture'
       }
     },
     {
+      difficulty: 'easier',
       name: "Reverse a string",
       info: {
         text: [
@@ -119,18 +135,21 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'medium',
       name: "Eulerian path",
       info: {
         wikipedia: 'Eulerian_path'
       }
     },
     {
+      difficulty: 'easy',
       name: "Simple file explorer",
       info: {
         wikipedia: 'File_manager'
       }
     },
     {
+      difficulty: 'easier',
       name: "Count words in a string", 
       bonus: ["lines, sentences, paragraphs, typos, &c."],
       info: {
@@ -140,24 +159,28 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'easy',
       name: "Minesweeper",
       info: {
         wikipedia: 'Minesweeper'
       }
     },
     {
+      difficulty: 'easy',
       name: "Connect Four",
       info: {
         wikipedia: 'Connect_Four'
       }
     },
     {
+      difficulty: 'easier',
       name: "BMI calculator",
       info: {
         wikipedia: 'Body_mass_index'
       }
     },
     {
+      difficulty: 'easy',
       name: "4chan thread/image downloader",
       bonus: ['without using the 4chan API', 'without using any command-line tools'],
       info: {
@@ -168,12 +191,14 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'easy',
       name: "Sudoku generator/solver",
       info: {
         wikipedia: 'Sudoku'
       }
     },
     {
+      difficulty: 'easy',
       name: "Maze generator/solver", 
       bonus: ["random graphs/trees"],
       info: {
@@ -181,6 +206,7 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'easier',
       name: "Radix (base) converter",
       info: {
         text: [
@@ -189,24 +215,28 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'easy',
       name: "Picross solver",
       info: {
         wikipedia: 'Nonogram'
       }
     },
     {
+      difficulty: 'easier',
       name: "Fibonacci sequence",
       info: {
         wikipedia: 'Fibonacci_number'
       }
     },
     {
+      difficulty: 'easier',
       name: "Factorial",
       info: {
         wikipedia: 'Factorial'
       }
     },
     {
+      difficulty: 'medium',
       name: "Cipher encryption/decryption tool", 
       note: ["Implement at least one of Rumkin Collection: http://rumkin.com/tools/cipher"],
       info: {
@@ -214,18 +244,21 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'easy',
       name: "Blackjack",
       info: {
         wikipedia: 'Blackjack'
       }
     },
     {
+      difficulty: 'hard',
       name: "Dungeons & Dragons with AI",
       info: {
         wikipedia: 'Dungeons_%26_Dragons'
       }
     },
     {
+      difficulty: 'medium',
       name: "Generate ASCII tree",
       bonus: ['recursively over a given filesystem path'],
       info: {
@@ -235,18 +268,21 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'hard',
       name: "Genetic algorithms on polygons",
       info: {
         wikipedia: 'Genetic_algorithm'
       }
     },
     {
+      difficulty: 'easy',
       name: "Benford's law",
       info: {
         wikipedia: 'Benford\'s_law'
       }
     },
     {
+      difficulty: 'easier',
       name: "Currency converter", 
       bonus: ["various units, commodities, etc.", "with history"],
       info: {
@@ -254,6 +290,7 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'easy',
       name: "Static website generator",
       info: {
         text: [
@@ -262,12 +299,14 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'medium',
       name: "Crossword game",
       info: {
         wikipedia: 'Crossword'
       }
     },
     {
+      difficulty: 'easy',
       name: "Scientific calculator", 
       bonus: ["GUI"],
       info: {
@@ -275,30 +314,35 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'medium',
       name: "Perlin noise",
       info: {
         wikipedia: 'Perlin_noise'
       }
     },
     {
+      difficulty: 'medium',
       name: "Image viewer",
       info: {
         wikipedia: 'Image_viewer'
       }
     },
     {
+      difficulty: 'easy',
       name: "ASCII digital clock",
       info: {
         wikipedia: 'Digital_clock'
       }
     },
     {
+      difficulty: 'medium',
       name: "Dijkstra's algorithm",
       info: {
         wikipedia: 'Dijkstra\'s_algorithm'
       }
     },
     {
+      difficulty: 'easy',
       name: "Text/Morse code translator", 
       bonus: ["with sound"],
       info: {
@@ -306,18 +350,21 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'easy',
       name: "Tic-tac-toe",
       info: {
         wikipedia: 'Tic-tac-toe'
       }
     },
     {
+      difficulty: 'easy',
       name: "Snake game",
       info: {
         wikipedia: 'Snake_(video_game)'
       }
     },
     {
+      difficulty: 'hard',
       name: "FTP client", 
       bonus: ["server"],
       info: {
@@ -325,6 +372,7 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'hard',
       name: "Telnet server", 
       bonus: ["with client", "netcat clone"],
       info: {
@@ -332,6 +380,7 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'medium',
       name: "IMP interpreter",
       info: {
         text: [
@@ -341,12 +390,14 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'medium',
       name: "Tetris",
       info: {
         wikipedia: 'Tetris'
       }
     },
     {
+      difficulty: 'medium',
       name: "Conway's Game of Life", 
       bonus: ["multiple cell types", 'with true cellular automata'],
       info: {
@@ -354,30 +405,35 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'easy',
       name: "Web crawler",
       info: {
         wikipedia: 'Web_crawler'
       }
     },
     {
+      difficulty: 'easy',
       name: "Text editor",
       info: {
         wikipedia: 'Text_editor'
       }
     },
     {
+      difficulty: 'medium',
       name: "RSS feed reader",
       info: {
         wikipedia: 'News_aggregator'
       }
     },
     {
+      difficulty: 'easy',
       name: "RPN calculator",
       info: {
         wikipedia: 'Reverse_Polish_notation'
       }
     },
     {
+      difficulty: 'hard',
       name: "Mandelbrot set", 
       bonus: ["other fractals"],
       info: {
@@ -385,6 +441,7 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'medium',
       name: "Sorting algorithms", 
       bonus: ["visualization"],
       info: {
@@ -392,6 +449,7 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'medium',
       name: "Custom markup → HTML converter",
       bonus: ['without using any regex longer than 10 characters'],
       info: {
@@ -401,12 +459,14 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'hard',
       name: "N queens problem",
       info: {
         wikipedia: 'Eight_queens_puzzle'
       }
     },
     {
+      difficulty: 'hard',
       name: "Flow in a network", 
       bonus: ["using the Ford-Fulkerson algorithm"],
       info: {
@@ -417,6 +477,7 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'easier',
       name: "Credential validator", 
       bonus: ["phone, email, &c."], 
       info: {
@@ -425,6 +486,7 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'easy',
       name: "Linked list", 
       bonus: ["single and double"],
       info: {
@@ -432,22 +494,26 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'medium',
       name: "Mastermind",
       info: {
         wikipedia: 'Mastermind_(board_game)'
       }
     },
     {
+      difficulty: 'easy',
       name: "Random image generator", 
       bonus: ["parametric"]
     },
     {
+      difficulty: 'medium',
       name: "Ulam spiral",
       info: {
         wikipedia: 'Ulam_spiral'
       }
     },
     {
+      difficulty: 'medium',
       name: "Klingon translator", 
       bonus: ["bidirectional"],
       info: {
@@ -455,12 +521,14 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'easy',
       name: "Prime number generator using a sieve",
       info: {
         wikipedia: 'Sieve_of_Eratosthenes'
       }
     },
     {
+      difficulty: 'easy',
       name: "Markov chains", 
       bonus: ["random text generation"],
       info: {
@@ -468,34 +536,40 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'medium',
       name: "Graphical analog clock",
       info: {
         wikipedia: 'Clock'
       }
     },
     {
+      difficulty: 'easier',
       name: "Two languages communicating with each other (C++/Java, Lisp/Python, &c.)",
       bonus: ["without using the filesystem", "and without using TCP"]
     },
     {
+      difficulty: 'easy',
       name: "Triangle number calculator",
       info: {
         wikipedia: 'Triangular_number'
       }
     },
     {
+      difficulty: 'easy',
       name: "Typing speed calculator",
       info: {
         wikipedia: 'Words_per_minute'
       }
     },
     {
+      difficulty: 'easy',
       name: "Name art in ASCII",
       info: {
         wikipedia: 'ASCII_art'
       }
     },
     {
+      difficulty: 'easy',
       name: "Towers of Hanoi", 
       bonus: ["for given number of disks", "always in 2n-1 moves"],
       info: {
@@ -503,18 +577,21 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'medium',
       name: "Quine",
       info: {
         wikipedia: 'Quine_(computing)'
       }
     },
     {
+      difficulty: 'medium',
       name: "IRC bot",
       info: {
         wikipedia: 'Internet_Relay_Chat'
       }
     },
     {
+      difficulty: 'medium',
       name: "Brainfuck interpreter", 
       bonus: ["transpile to multiple languages", "...with optimization"],
       info: {
@@ -522,6 +599,7 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'hard',
       name: "Knight's tour solver",
       bonus: ["on a chessboard of given size", "...on a non-square chessboard"],
       info: {
@@ -529,18 +607,21 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'medium',
       name: "Chip-8 interpreter",
       info: {
         wikipedia: 'CHIP-8'
       }
     },
     {
+      difficulty: 'easy',
       name: "Geek Code generator (v3.12)",
       info: {
         wikipedia: 'Geek_Code'
       }
     },
     {
+      difficulty: 'hard',
       name: "Define, translate, and rotate a polygon", 
       bonus: ["other affine transformations"],
       info: {
@@ -548,30 +629,35 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'medium',
       name: "Pong with variable vectors",
       info: {
         wikipedia: 'Pong'
       }
     },
     {
+      difficulty: 'medium',
       name: "Battleship with AI",
       info: {
         wikipedia: 'Battleship_(game)'
       }
     },
     {
+      difficulty: 'medium',
       name: "Simple paint program",
       info: {
         wikipedia: 'Raster_graphics_editor'
       }
     },
     {
+      difficulty: 'easy',
       name: "TCP chat with simple encryption",
       info: {
         wikipedia: 'Online_chat'
       }
     },
     {
+      difficulty: 'medium',
       name: "Incremental economy simulator (à la 'Time of Exploration')",
       info: {
         text: [
@@ -586,30 +672,35 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'easy',
       name: "Steganography (concealing data in other data)",
       info: {
         wikipedia: 'Steganography'
       }
     },
     {
+      difficulty: 'easy',
       name: "Pascal's triangle",
       info: {
         wikipedia: 'Pascal\'s_triangle'
       }
     },
     {
+      difficulty: 'easy',
       name: "Sine wave generator from pseudorandom numbers",
       info: {
         wikipedia: 'Sine_wave'
       }
     },
     {
+      difficulty: 'easy',
       name: "Flappy Bird",
       info: {
         wikipedia: 'Flappy_Bird'
       }
     },
     {
+      difficulty: 'easy',
       name: "Fourier transform", 
       bonus: ["fast or 'slow'", "visualization"],
       info: {
@@ -617,12 +708,14 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'easy',
       name: "Method ringing simulator",
       info: {
         wikipedia: 'Method_ringing'
       }
     },
     {
+      difficulty: 'easy',
       name: "Binary search", 
       bonus: ["n-ary"],
       info: {
@@ -630,6 +723,7 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'medium',
       name: "Nintendo Oil Panic",
       info: {
         text: [
@@ -640,12 +734,14 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'easy',
       name: "Sierpinski triangle",
       info: {
         wikipedia: 'Sierpinski_triangle'
       }
     },
     {
+      difficulty: 'easy',
       name: "Dot & cross product of two vectors", 
       bonus: ["exterior product"],
       info: {
@@ -656,12 +752,14 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'medium',
       name: "Little Man Computer emulator",
       info: {
         wikipedia: 'Little_man_computer'
       }
     },
     {
+      difficulty: 'easy',
       name: "Lisp interpreter", 
       bonus: ["generic FFI for host language"],
       info: {
@@ -669,6 +767,7 @@ window.challenges = {
       }
     },
     {
+      difficulty: 'medium',
       name: "Enigma simulator with a configuration file", 
       bonus: ["decrypt messages without known settings"],
       info: {

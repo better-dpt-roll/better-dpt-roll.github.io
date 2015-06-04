@@ -159,10 +159,17 @@ function renderChallenges() {
       content: pad(i)
     }));
 
+    // Difficulty cell
+    rowHtml.appendChild(element({
+      name: 'div',
+      className: 'col-xs-3 col-sm-2 difficulty',
+      content: challenge.difficulty
+    }));
+
     // Challenge text cell
     var cell = {
       name: 'div',
-      className: 'col-xs-11 col-sm-11 challenge',
+      className: 'col-xs-8 col-sm-9 challenge',
       content: challenge.name,
       children: []
     };
@@ -242,7 +249,11 @@ function roll(n) {
     .html(window.location.href.replace(/\#.*$/, '') + '#' + n.toString());
 
   rollModal.find('.modal-body p.challenge')
-    .html(target.querySelector('.challenge').innerHTML);
+    .html(target.querySelector('.challenge').innerHTML
+          + ' '
+          + '('
+          + target.querySelector('.difficulty').innerHTML
+          + ')');
 
   if (typeof data.info !== 'undefined') {
     loadInfo(data.info, rollModal.find('.modal-body p.info')[0]);
