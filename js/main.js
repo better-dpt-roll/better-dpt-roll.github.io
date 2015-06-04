@@ -40,7 +40,7 @@ function fetchInfo(key, target) {
       + '?action=query' 
       + '&format=json'
       + '&prop=extracts'
-      + '&titles=' + key.replace(/ /g, '_')
+      + '&titles=' + encodeURIComponent(key.replace(/ /g, '_'))
   });
 
   defer.then(function(data, status, xhr) {
@@ -67,10 +67,6 @@ function fetchInfo(key, target) {
  * FIXME cache wikimedia content
  */
 function loadInfo(info, el) {
-  Array.prototype.forEach.call(el.childNodes, function(node) {
-    el.removeChild(node);
-  });
-
   if (typeof info.wikipedia !== 'undefined') {
     // if this is a wikipedia ref (or set of same), fetch and append
     // all
@@ -217,7 +213,8 @@ function roll(n) {
     , rollModal = $('#roll-modal')
     , data
     , target
-    , scrolledY;
+    , scrolledY
+    , infoContainer;
 
   if (typeof n === 'undefined') {
     n = Math.floor(Math.random() * window.challenges.challenges.length);
@@ -242,21 +239,24 @@ function roll(n) {
     window.scroll(0, scrolledY - headerHeight);
   }
 
-  rollModal.find('.modal-header span').html(pad(n));
+  rollModal.find('.modal-header span')
+    .html(pad(n)
+          + ' '
+          + '('
+          + target.querySelector('.difficulty').innerHTML
+          + ')');
 
   rollModal.find('.modal-footer a')
     .attr('href', '#' + n.toString())
     .html(window.location.href.replace(/\#.*$/, '') + '#' + n.toString());
 
   rollModal.find('.modal-body p.challenge')
-    .html(target.querySelector('.challenge').innerHTML
-          + ' '
-          + '('
-          + target.querySelector('.difficulty').innerHTML
-          + ')');
+    .html(target.querySelector('.challenge').innerHTML);
 
+  infoContainer = rollModal.find('.modal-body p.info')[0];
+  infoContainer.innerHTML = '';
   if (typeof data.info !== 'undefined') {
-    loadInfo(data.info, rollModal.find('.modal-body p.info')[0]);
+    loadInfo(data.info, infoContainer);
   }
 
   rollModal.modal('show');
