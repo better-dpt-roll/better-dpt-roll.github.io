@@ -83,8 +83,16 @@ div#info-modal div.modal-body p.byline span#dpt-version {
   }
 }
 
-@media (max-width: 375px) {
-  div.row div.challenge {
-    width: auto;
+@media (max-width: 480px) {
+  div.row div.difficulty::before {
+    content: "(";
+  }
+  
+  div.row div.difficulty::after {
+    content: ")";
+  }
+  
+  div.row {
+    border-bottom: #888 solid 1px;
   }
 }
