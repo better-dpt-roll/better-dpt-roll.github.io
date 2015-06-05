@@ -165,17 +165,22 @@ function renderChallenges() {
   target.innerHTML = '';
   target.appendChild(element({
     name: 'table',
+    className: 'table table-striped table-condensed',
     children: [
       element({
         name: 'thead',
         children: [
           element({name: 'tr',
+                   className: 'row',
                    children: [
                      element({name: 'th',
-                              content: '#'}),
+                              className: 'col-xs-1',
+                              content: ''}),
                      element({name: 'th',
+                              className: 'col-xs-1',
                               content: 'Difficulty'}),
                      element({name: 'th',
+                              className: 'col-xs-10',
                               content: 'Challenge'})
                    ]})
         ]
