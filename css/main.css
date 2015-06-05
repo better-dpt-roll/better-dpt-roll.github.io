@@ -19,6 +19,10 @@ div#info-modal p span {
   text-align: center;
 }
 
+#challenge-container tbody {
+  cursor: pointer;
+}
+
 #challenge-container tbody > tr.selected {
   background: white;
   font-size: larger;
