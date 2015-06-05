@@ -19,14 +19,6 @@ div#info-modal p span {
   text-align: center;
 }
 
-#challenge-container tbody > tr:nth-of-type(2n) {
-  background: #edeff0;
-}
-
-#challenge-container tbody > tr:nth-of-type(2n+1) {
-  background: #d4e5e6;
-}
-
 #challenge-container tbody > tr.selected {
   background: white;
   font-size: larger;

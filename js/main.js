@@ -49,9 +49,13 @@ function isElementInViewport (el) {
  */
 function element(details) {
   var el = document.createElement(details.name);
-  el.className = details.className || '';
-  el.id = details.id || '';
-  el.innerHTML = details.content || '';
+  
+  if (typeof details.attrs !== 'undefined') {
+    Object.keys(details.attrs).forEach(function(key) {
+      el[key] = details.attrs[key];
+    });
+  }
+  
   if (typeof details.children !== 'undefined') {
     details.children.forEach(function(child) {
       el.appendChild(child);
@@ -60,11 +64,23 @@ function element(details) {
   return el;
 }
 
+function mapDifficulty(d) {
+  if (d === 'easy') { return '0'; };
+  if (d === 'medium') { return '1'; };
+  if (d === 'hard') { return '2'; };
+  if (d === 'harder') { return '3'; };
+  return '-1';
+}
+
 /**
- * Left-pad a number with a single 0 if necessary
+ * Left-pad a number with 0s if necessary
  */
-function pad(i) {
-  return (i.toString().length < 2 ? '0' : '') + i;
+function pad(i, len) {
+  var v = i.toString();
+  while (v.length < len) {
+    v = '0' + v;
+  }
+  return v;
 }
 
 /**
@@ -87,8 +103,11 @@ function fetchInfo(key, target) {
   defer.then(function(data, status, xhr) {
     var foo = element({
       name: 'body',
-      content: data.query.pages[Object.keys(data.query.pages)[0]]
-        .extract
+      attrs: {
+        innerHTML: data.query
+          .pages[Object.keys(data.query.pages)[0]]
+          .extract
+      }
     });
 
     if (foo.querySelector('p')) {
@@ -121,20 +140,26 @@ function loadInfo(info, el) {
 
       detailsLink = element({
         name: 'a',
-        className: 'details',
-        content: 'Read more'
+        attrs: {
+          className: 'details',
+          innerHTML: 'Read more'
+        }
       });
       detailsLink.href = 'http://en.wikipedia.org/wiki/'
         + wik;
       
       wikiInfo = element({
         name: 'span',
-        className: 'wiki-info-' + i,
+        attrs: {
+          className: 'wiki-info-' + i
+        },
         children: [
           element({
             name: 'p',
-            className: 'wiki-info',
-            content: 'Loading...'
+            attrs: { 
+              className: 'wiki-info',
+              innerHTML: 'Loading...'
+            }
           }),
           detailsLink
         ]
@@ -147,14 +172,18 @@ function loadInfo(info, el) {
     // it
     var detailsLink = element({
       name: 'a',
-      className: 'details',
-      content: 'Read more'
+      attrs: {
+        className: 'details',
+        innerHTML: 'Read more'
+      }
     });
     detailsLink.href = info.source;
     el.appendChild(element({
       name: 'span',
-      content: info.text.join('<br />'),
-      children: [detailsLink]
+      attrs: {
+        innerHTML: info.text.join('<br />'),
+        children: [detailsLink]
+      }
     }));
   }
 }
@@ -185,23 +214,33 @@ function renderChallenges() {
   target.innerHTML = '';
   target.appendChild(element({
     name: 'table',
-    className: 'table table-condensed',
+    attrs: {
+      className: 'table table-condensed table-striped'
+    },
     children: [
       element({
         name: 'thead',
         children: [
           element({name: 'tr',
-                   className: 'row',
+                   attrs: {
+                     className: 'row'
+                   },
                    children: [
                      element({name: 'th',
-                              className: 'col-xs-1',
-                              content: ''}),
+                              attrs: {
+                                className: 'col-xs-1',
+                                innerHTML: '&nbsp;'
+                              }}),
                      element({name: 'th',
-                              className: 'col-xs-1',
-                              content: 'Difficulty'}),
+                              attrs: {
+                                className: 'col-xs-1',
+                                innerHTML: 'Difficulty'
+                              }}),
                      element({name: 'th',
-                              className: 'col-xs-10',
-                              content: 'Challenge'})
+                              attrs: {
+                                className: 'col-xs-10',
+                                innerHTML: 'Challenge'
+                              }})
                    ]})
         ]
       }),
@@ -216,24 +255,33 @@ function renderChallenges() {
 
     row = element({
       name: 'tr',
-      className: 'row',
-      id: 'challenge-' + i.toString(),
+      attrs: {
+        className: 'row',
+        id: 'challenge-' + i.toString()
+      },
       children: [
         element({
           name: 'td',
-          className: 'index',
-          content: pad(i)
+          attrs: {
+            className: 'index',
+            innerHTML: pad(i, 3)
+          }
         }),
         element({
           name: 'td',
-          className: 'difficulty',
-          content: challenge.difficulty
+          attrs: {
+            className: 'difficulty',
+            innerHTML: challenge.difficulty,
+            'data-order': mapDifficulty(challenge.difficulty),
+            'data-sort': mapDifficulty(challenge.difficulty)
+          }
         }),
         element({
           name: 'td',
-          className: 'challenge',
-          content: challenge.name,
-          children: []
+          attrs: {
+            className: 'challenge',
+            innerHTML: challenge.name
+          }
         })
       ]
     });
@@ -244,8 +292,10 @@ function renderChallenges() {
           row.querySelector('td:last-child')
             .appendChild(element({
               name: 'span',
-              className: 'extra',
-              content: extraType + ': ' + bonus
+              attrs: {
+                className: 'extra',
+                innerHTML: extraType + ': ' + bonus
+              }
             }));
         });
       }
@@ -262,6 +312,25 @@ function renderChallenges() {
 
     challengeTable.appendChild(row);
   }
+
+  jQuery(selectors.challenge.table).DataTable({
+    paging: false,
+    info: false,
+    searching: false,
+    columnDefs: [
+      {
+        targets: 1,
+        data: {
+          _: '1.display',
+          order: '1.@data-order',
+          // wtf
+          sort: function() {
+            return mapDifficulty(arguments[0][1].display);
+          }
+        }
+      }
+    ]
+  });
 }
 
 /**
@@ -308,7 +377,7 @@ function roll(n) {
   }
       
   rollModal.find('.modal-header span')
-    .html(pad(n)
+    .html(pad(n, 3)
           + ' '
           + '('
           + target.querySelector('.difficulty').innerHTML
