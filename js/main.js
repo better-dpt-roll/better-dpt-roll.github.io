@@ -25,6 +25,26 @@ var selectors = {
  */
 
 /**
+ * Determine whether the given element is within the viewport.
+ * Happily yoinked from http://stackoverflow.com/a/7557433/1713079.
+ */
+function isElementInViewport (el) {
+  //special bonus for those using jQuery
+  if (typeof jQuery === "function" && el instanceof jQuery) {
+    el = el[0];
+  }
+
+  var rect = el.getBoundingClientRect();
+
+  return (
+    rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+  );
+}
+
+/**
  * Generate a DOM node with given properties.
  */
 function element(details) {
@@ -165,7 +185,7 @@ function renderChallenges() {
   target.innerHTML = '';
   target.appendChild(element({
     name: 'table',
-    className: 'table table-striped table-condensed',
+    className: 'table table-condensed',
     children: [
       element({
         name: 'thead',
@@ -231,6 +251,15 @@ function renderChallenges() {
       }
     });
 
+    row.addEventListener('click', function(e) {
+      var target = e.target
+        , row = target;
+      while (row.tagName !== 'TR') {
+        row = row.parentNode;
+      };
+      roll(parseInt(row.querySelector('td:first-child').innerHTML, 10));
+    });
+
     challengeTable.appendChild(row);
   }
 }
@@ -269,13 +298,15 @@ function roll(n) {
     lastSelected.classList.remove('selected');
   }
   lastSelected = target;
-  
-  target.scrollIntoView();
-  scrolledY = window.scrollY;
-  if (scrolledY) {
-    window.scroll(0, scrolledY - headerHeight);
-  }
 
+  if (! isElementInViewport(target)) {
+    target.scrollIntoView();
+    scrolledY = window.scrollY;
+    if (scrolledY) {
+      window.scroll(0, scrolledY - headerHeight - (window.innerHeight / 2));
+    }
+  }
+      
   rollModal.find('.modal-header span')
     .html(pad(n)
           + ' '
