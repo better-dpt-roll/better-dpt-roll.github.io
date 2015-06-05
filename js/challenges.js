@@ -1140,6 +1140,25 @@ window.challenges = {
           'This should greatly facilitate shitposting.'
         ]
       }
+    },
+    {
+      difficulty: 'easy',
+      name: 'SAME (Emergency Alert System) AFSK encoder',
+      bonus: ['as a webpage', 'as a CLI app'],
+      info: {
+        wikipedia: 'Specific_Area_Message_Encoding'
+      }
+    },
+    {
+      difficulty: 'medium',
+      name: 'Turing pattern generator',
+      bonus: ['natively generating video files'],
+      info: {
+        text: [
+          'In his 1952 paper “The Chemical Basis of Morphogenesis” Alan Turing suggested that a system of chemical substances, reacting together and diffusing through a tissue, would account for the generation of patterns in multi- cellular organisms. In this paper a simplified computer model is derived from his idea, successively elaborated and used for the production of artworks reminiscent of electron microscope images of diatoms.'
+        ],
+        source: 'http://www.jonathanmccabe.com/Cyclic_Symmetric_Multi-Scale_Turing_Patterns.pdf'
+      }
     }
   ]
 };
