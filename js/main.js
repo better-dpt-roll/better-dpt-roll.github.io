@@ -1,6 +1,26 @@
 var lastSelected;
 
 /*
+ * File globals
+ */
+var selectors = {
+  versionNumber: 'span#dpt-version',
+  challenge: {
+    container: 'div#challenge-container',
+    table: 'div#challenge-container table',
+    tbody: 'div#challenge-container table tbody'
+  },
+  modals: {
+    roll: '#roll-modal',
+    info: '#info-modal'
+  },
+  buttons: {
+    roll: 'button#roll',
+    dpt: 'button#dpt'
+  }
+};
+
+/*
  * Utility functions
  */
 
@@ -10,6 +30,7 @@ var lastSelected;
 function element(details) {
   var el = document.createElement(details.name);
   el.className = details.className || '';
+  el.id = details.id || '';
   el.innerHTML = details.content || '';
   if (typeof details.children !== 'undefined') {
     details.children.forEach(function(child) {
@@ -129,72 +150,83 @@ function loadInfo(info, el) {
  * NB: Called on DOMContentLoaded.
  */
 function renderChallenges() {
-  var target = document.querySelector('#challenge-container')
+  var target = document.querySelector(selectors.challenge.container)
     , data = window.challenges
+    , challengeTable
     , challenge
     , index
-    , rowHtml
-    , cellHtml;
+    , row;
 
   // Set the challenge list version in the info modal
-  document.querySelector('span#dpt-version')
+  document.querySelector(selectors.versionNumber)
     .innerHTML = data.version;
 
-  // Render each challenge into a row div within #challenge-container
+  // Set up the challenge container table
+  target.innerHTML = '';
+  target.appendChild(element({
+    name: 'table',
+    children: [
+      element({
+        name: 'thead',
+        children: [
+          element({name: 'tr',
+                   children: [
+                     element({name: 'th',
+                              content: '#'}),
+                     element({name: 'th',
+                              content: 'Difficulty'}),
+                     element({name: 'th',
+                              content: 'Challenge'})
+                   ]})
+        ]
+      }),
+      element({name: 'tbody'})
+    ]
+  }));
+  challengeTable = document.querySelector(selectors.challenge.tbody);
+
+  // Populate challenge data into the table
   for (var i = 0; i < data.challenges.length; i++) {
     challenge = data.challenges[i];
-    
-    rowHtml = document.createElement('div');
-    rowHtml.id = 'challenge-' + i.toString();
-    rowHtml.className = 'row ' + (i % 2 ? 'even' : 'odd');
 
-    // Index cell
-    rowHtml.appendChild(element({
-      name: 'div',
-      className: 'col-xs-1 col-sm-1 index',
-      content: pad(i)
-    }));
+    row = element({
+      name: 'tr',
+      className: 'row',
+      id: 'challenge-' + i.toString(),
+      children: [
+        element({
+          name: 'td',
+          className: 'index',
+          content: pad(i)
+        }),
+        element({
+          name: 'td',
+          className: 'difficulty',
+          content: challenge.difficulty
+        }),
+        element({
+          name: 'td',
+          className: 'challenge',
+          content: challenge.name,
+          children: []
+        })
+      ]
+    });
 
-    // Difficulty cell
-    rowHtml.appendChild(element({
-      name: 'div',
-      className: 'col-xs-3 col-sm-2 difficulty',
-      content: challenge.difficulty
-    }));
-
-    // Challenge text cell
-    var cell = {
-      name: 'div',
-      className: 'col-xs-8 col-sm-9 challenge',
-      content: challenge.name,
-      children: []
-    };
-
-    // Extra details if the challenge includes them
     ['bonus', 'note'].forEach(function(extraType) {
       if (challenge[extraType]) {
         challenge[extraType].forEach(function(bonus) {
-          cell.children.push(element({
-            name: 'span',
-            className: 'extra',
-            content: extraType + ': ' + bonus
-          }));
+          row.querySelector('td:last-child')
+            .appendChild(element({
+              name: 'span',
+              className: 'extra',
+              content: extraType + ': ' + bonus
+            }));
         });
       }
     });
 
-    // Clicking on a challenge pops it up as though rolled
-    rowHtml.addEventListener('click', function(e) {
-      var rowDiv = e.target;
-      while (rowDiv.tagName !== 'div' && !rowDiv.className.match(/^row/)) {
-        rowDiv = rowDiv.parentNode;
-      }
-      roll(parseInt(rowDiv.querySelector('.index').innerHTML));
-    });
-
-    // Add new nodes to DOM
-    rowHtml.appendChild(element(cell));
-    target.appendChild(rowHtml);
+    challengeTable.appendChild(row);
   }
 }
 
