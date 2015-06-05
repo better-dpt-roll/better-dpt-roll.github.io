@@ -1159,6 +1159,14 @@ window.challenges = {
         ],
         source: 'http://www.jonathanmccabe.com/Cyclic_Symmetric_Multi-Scale_Turing_Patterns.pdf'
       }
+    },
+    {
+      difficulty: 'medium',
+      name: 'Binaural beats generator',
+      bonus: ['as a webpage'],
+      info: {
+        wikipedia: 'Binaural_beats'
+      }
     }
   ]
 };
