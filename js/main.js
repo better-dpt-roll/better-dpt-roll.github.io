@@ -38,9 +38,9 @@ function isElementInViewport (el) {
 
   return (
     rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
   );
 }
 
@@ -228,17 +228,17 @@ function renderChallenges() {
                    children: [
                      element({name: 'th',
                               attrs: {
-                                className: 'col-xs-1',
+                                className: 'col-xs-1 index',
                                 innerHTML: '&nbsp;'
                               }}),
                      element({name: 'th',
                               attrs: {
-                                className: 'col-xs-1',
+                                className: 'col-xs-1 difficulty',
                                 innerHTML: 'Difficulty'
                               }}),
                      element({name: 'th',
                               attrs: {
-                                className: 'col-xs-10',
+                                className: 'col-xs-11 challenge',
                                 innerHTML: 'Challenge'
                               }})
                    ]})
@@ -378,10 +378,12 @@ function roll(n) {
       
   rollModal.find('.modal-header span')
     .html(pad(n, 3)
+          + '<span class="difficulty">'
           + ' '
           + '('
           + target.querySelector('.difficulty').innerHTML
-          + ')');
+          + ')'
+          + '</span>');
 
   rollModal.find('.modal-footer a')
     .attr('href', '#' + n.toString())

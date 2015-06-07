@@ -1,3 +1,7 @@
+.difficulty {
+  display: none !important;
+}
+
 #challenge-container {
   padding-top: 7ex;
 }
@@ -63,4 +67,7 @@ div#info-modal div.modal-body p.byline span#dpt-version {
 }
 
 @media (max-width: 480px) {
+  #challenge-container tbody > tr {
+    font-size: smaller;
+  }
 }
