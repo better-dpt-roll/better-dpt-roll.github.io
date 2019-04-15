@@ -407,7 +407,46 @@ function roll(n) {
  * NB: Called when the '>>>/dpt/' button is clicked.
  */
 function dpt() {
-  window.location.href = 'https://boards.4chan.org/g/catalog#s=/dpt/';
+  // TODO: Use something more visually appealing
+  document.body.style.cursor = "wait";
+  document.body.innerHTML = "<h3>Searching threads...</h3>";
+
+  // If something goes wrong, use the old behavior
+  var fallback = function() {
+    window.location.href = 'https://boards.4chan.org/g/catalog#s=/dpt/';
+  };
+
+  var request = new XMLHttpRequest();
+  
+  // Use the 4chan API to find the first /dpt/ thread
+  request.addEventListener('load', function() {
+    var pages = JSON.parse(request.responseText);
+
+    // Loop through every page
+    for (var pageNumber = 0; pageNumber < pages.length; pageNumber++) {
+      var threads = pages[pageNumber]['threads'];
+
+      // Loop through every thread in the page
+      for (var threadNumber = 0; threadNumber < threads.length; threadNumber++) {
+        var thread = threads[threadNumber];
+
+        if (thread.hasOwnProperty('sub') && thread['sub'].includes('/dpt/')) {
+          window.location.href = 'https://boards.4chan.org/g/thread/' + thread['no'];
+          return;
+        }
+      }
+    }
+
+    // If no /dpt/ thread has been found, use the old behavior
+    fallback();
+  });
+  
+
+  request.addEventListener('error', fallback);
+  request.addEventListener('timeout', fallback);
+
+  request.open('GET', 'https://a.4cdn.org/g/catalog.json');
+  request.send();
 }
 
 /**
